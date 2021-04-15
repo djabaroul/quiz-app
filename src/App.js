@@ -1,4 +1,4 @@
-
+import React,{useState} from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header/Header'
@@ -9,13 +9,17 @@ import Result from './Pages/Result/Result';
 
 
 function App() {
+  const [name,setName] = useState("");
+  const fetchQuestions=()=> {
+
+  }
   return (
     <BrowserRouter>
       <div className="App" style={{backgroundImage:'url(./ques1.png)'}}>
         <Header/>
         <Switch>
           <Route path='/' exact>
-            <Home/>
+            <Home name={name} setName={setName} fetchQuestions={fetchQuestions}/>
           </Route>
           <Route path='/quiz' exact>
             <Quiz/>
