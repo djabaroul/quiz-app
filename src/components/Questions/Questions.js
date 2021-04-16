@@ -1,6 +1,8 @@
+import { Button } from '@material-ui/core';
 import React,{useState} from 'react'
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
-import "./Questions.css"
+import "./Questions.css";
+import {useHistory} from "react-router"
 
 const Questions = ({
     currQues,
@@ -33,6 +35,24 @@ const Questions = ({
         setError(false);
     };
 
+    const history = useHistory()
+
+    const handleNext = ()=> {
+        if(currQues>8) {
+            history.push('/result')
+        }
+        else if(selected){
+            setCurrQues(currQues + 1)
+            setSelected()
+        }else {
+            setError('Please select an option first') ;
+        }
+    }
+
+    const handleQuit = ()=> {
+
+    }
+
     return (
         <div className='question'>
             <h1>Question {currQues +1}</h1>
@@ -54,6 +74,27 @@ const Questions = ({
                   ))
                }
               </div>
+                <div className='controls'>
+                  <Button
+                   variant="contained"
+                   color="secondary"
+                   size="large"
+                   style={{width:185}}
+                   href="/"
+                   onClick={handleQuit}
+                  >
+                    Quit
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    size="large"
+                    style={{width:185}}
+                    onClick={handleNext}
+                  >
+                    Next Question
+                  </Button>
+                </div>
             </div>
         </div>
     )

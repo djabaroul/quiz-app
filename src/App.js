@@ -38,7 +38,10 @@ function App() {
             />
           </Route>
           <Route path='/result' exact>
-            <Result/>
+            <Result
+            name={name}
+              score={score}
+            />
           </Route>
         </Switch>
       </div>
