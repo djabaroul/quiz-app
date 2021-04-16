@@ -17,7 +17,6 @@ const Quiz = ({name,score,setScore,questions,setQuestions}) => {
         ]))
         
     }, [questions]);
-    console.log(options);
 
     const handleShuffle =(optionss)=>{
         return optionss.sort(()=> Math.random() - 0.5)
